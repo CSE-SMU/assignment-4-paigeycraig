@@ -19,6 +19,9 @@
 				      <header>
 					<form id="todo-form" ng-submit="addTodo()">
 						<input id="new-todo" placeholder="Enter Todo List" ng-model="newTodo" ng-disabled="saving" autofocus>
+						<input id="new-todo" placeholder="description" ng-model="newTodoDescription" ng-disabled="saving">
+						<input id="new-todo" placeholder="MM/DD/YYYY" ng-model="newTodoDate" ng-disabled="saving">
+						<button type="submit" id="submit-button">Submit</button>
 					</form>
 				</header>
 				<section id="main" ng-show="todos.length" ng-cloak>
@@ -29,6 +32,8 @@
 							<div class="view">
 								<input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
 								<label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+								<label ng-dblclick="editTodo(todo)">{{todo.description}}</label>
+								<label ng-dblclick="editTodo(todo)">{{todo.date}}</label>
 								<button class="destroy" ng-click="removeTodo(todo)"></button>
 							</div>
 							<form ng-submit="saveEdits(todo, 'submit')">

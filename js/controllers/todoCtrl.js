@@ -31,10 +31,19 @@ angular.module('todomvc')
 		$scope.addTodo = function () {
 			var newTodo = {
 				title: $scope.newTodo.trim(),
+				description: $scope.newTodoDescription.trim(),
+				date: $scope.newTodoDate.trim(),
 				completed: false
 			};
 
 			if (!newTodo.title) {
+				return;
+			}
+			if (!newTodo.description) {
+				return;
+			}
+
+			if(!newTodo.date) {
 				return;
 			}
 
@@ -42,6 +51,8 @@ angular.module('todomvc')
 			store.insert(newTodo)
 				.then(function success() {
 					$scope.newTodo = '';
+					$scope.newTodoDescription = '';
+					$scope.newTodoDate = '';
 				})
 				.finally(function () {
 					$scope.saving = false;
